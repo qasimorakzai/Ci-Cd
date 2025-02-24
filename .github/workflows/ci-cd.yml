@@ -3,12 +3,12 @@ name: Node.js CI/CD
 on:
   push:
     branches:
-        -main
-      - qasim     # CI/CD will trigger on push to the main branch
+      - main      # CI/CD will trigger on push to the main branch
+      - qasim     # CI/CD will trigger on push to the qasim branch
   pull_request:
     branches:
-        -main
-      - qasim      # CI/CD will trigger on pull request to the main branch
+      - main      # CI/CD will trigger on pull request to the main branch
+      - qasim     # CI/CD will trigger on pull request to the qasim branch
 
 jobs:
   build:
