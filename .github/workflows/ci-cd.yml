@@ -1,0 +1,36 @@
+name: Node.js CI/CD
+
+on:
+  push:
+    branches:
+        -main
+      - qasim     # CI/CD will trigger on push to the main branch
+  pull_request:
+    branches:
+        -main
+      - qasim      # CI/CD will trigger on pull request to the main branch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest    # This specifies that the job will run on the latest Ubuntu environment
+
+    steps:
+    - name: Checkout code       # Checkout the code from the repository
+      uses: actions/checkout@v2
+
+    - name: Set up Node.js       # Set up Node.js environment
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14.x'    # Use Node.js version 14.x
+
+    - name: Install dependencies # Install the app's dependencies
+      run: npm install
+
+    - name: Run tests            # Run tests if you have them
+      run: npm test
+
+    # Optional: Deploy to Production (if you add deployment step)
+    - name: Deploy to Production
+      run: |
+        echo "Deploying to production..."
+        # Add your deployment script here
